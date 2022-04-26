@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(4,auto);
+            gap:20px;
+            width:95%;
+            /* border:1px solid red; */
+            margin:auto
+        }
+        #container>div{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius:20px;
+            text-align:center;
+        }
+        #container>div>p{
+            margin-top: -10px;
+        }
+        #container>div>p+img{
+            width:40%;
+            margin-top:-15px;
+        }
+        #container>div>img{
+            width:100%;
+            border-top-right-radius:10px;
+            border-top-left-radius:10px
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Investors</h1>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    var investArr = JSON.parse(localStorage.getItem("investordata"))
+    console.log(investArr);
+
+    investArr.forEach(function (elem) {
+        // console.log(elem)
+       var box= document.createElement("div")       
+
+       var image= document.createElement("img")
+       image.setAttribute("src",elem.avatar)
+
+       var invename= document.createElement("h3")
+       invename.innerText= elem.name
+
+       var role= document.createElement('p')
+       role.innerText=elem.position
+
+       var invelogo= document.createElement('img')
+       invelogo.setAttribute("src",elem.companyLogo)
+
+       box.append(image,invename,role,invelogo)
+       
+       document.querySelector("#container").append(box)
+    })
+</script>
