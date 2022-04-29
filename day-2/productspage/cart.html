@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body><h1>Cart</h1>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    var addcartArr= JSON.parse(localStorage.getItem('cartItems'))
+
+    displayData(addcartArr)
+
+    function displayData(data){
+        data.forEach(function(elem,index){
+        var box= document.createElement('div')
+
+        var image= document.createElement('img')
+        image.setAttribute("src",elem.image_url)
+
+        var Name= document.createElement('p')
+        Name.innerText= elem.name;
+
+        var smallbox= document.createElement('div')
+
+            var rate= document.createElement('p')
+            rate.innerHTML= elem.price
+
+            var disc= document.createElement('strike')
+            disc.innerText= elem.strikedoffprice
+            // console.log(image,name,rate,disc)
+
+        smallbox.append(rate,disc)
+        var del= document.createElement('button') 
+        del.innerText= 'Delete'
+        del.style.backgroundColor= 'red'   
+        del.style.color = 'white'
+        del.addEventListener('click',function(){
+            deletefunc(elem,index)
+        })
+
+        box.append(image, Name, smallbox, del)
+
+        document.querySelector('#container').append(box)
+    
+    })
+
+  }
+
+  function deletefunc(elem,index){
+    addcartArr.splice(index,1)
+    localStorage.setItem('cartItems',JSON.stringify(addcartArr))
+    window.location.reload();
+  }
+</script>
