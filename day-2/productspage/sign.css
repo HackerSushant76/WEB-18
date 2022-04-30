@@ -1,0 +1,33 @@
+#form{
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: repeat(3,40px);
+    gap: 30px;
+}
+h1{
+    margin-bottom: 40px;
+    color: white;
+    font-weight:bolder;
+    font-size: 40px;
+}
+#container{
+    width: max-content;
+    /* border: 1px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    padding-bottom: 60px;
+    /* height: 400px; */
+    margin-top: 80px;
+    background-color: yellowgreen;
+}
+#sub{
+    width: max-content;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    margin: auto;
+    background-color: rgb(55, 3, 243);
+    color: white;
+    border: 0px;
+}

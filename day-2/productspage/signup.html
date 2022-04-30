@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Sign Up</h1>
+            <form action="" id="form">
+            <input type="text" id="username" placeholder="Enter a Username">
+            <input type="text" id="email" placeholder="Enter your Email">
+            <input type="text" id="password" placeholder="Create a password">
+             <input type="submit" id="sub">
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector('#form').addEventListener('submit',myformfunc)
+
+    var signupArr =JSON.parse(localStorage.getItem('signuplist')) || [];
+    
+    function myformfunc(){
+        event.preventDefault();
+        
+        var signupobj= {
+            userName : form.username.value,
+            Email : form.email.value ,
+            Password : form.password.value
+        }
+        if(signupobj.userName=== "" || signupobj.Email=== "" || signupobj.Password=== "" ){
+            alert('fill all the details')
+        }
+        else{
+            var exist= signupArr.filter(function(el){
+            return signupobj.userName === el.userName
+        })
+        if(exist.length>0){
+            alert('user already Exist')
+        }
+        else{
+             signupArr.push(signupobj)
+        console.log(signupArr)
+        localStorage.setItem('signuplist', JSON.stringify(signupArr))
+        window.location.href= "signin.html" ;
+        document.querySelector('#form').innerHTML= ""
+        }
+        }
+        // localStorage.clear()   
+    }
+</script>

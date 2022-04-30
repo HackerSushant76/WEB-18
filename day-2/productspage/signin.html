@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Log In</h1>
+            <form action="" id="form">
+            <input type="text" id="username" placeholder="Enter your Username">
+            <input type="text" id="password" placeholder="Enter your password">
+             <input type="submit" id="sub">
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector('#form').addEventListener('submit',MysignInFunc)
+
+   
+    var userData= JSON.parse(localStorage.getItem("signuplist"))
+    console.log(userData)
+
+    
+    function MysignInFunc(){
+        event.preventDefault();
+        var signInObj = {
+            Username: form.username.value,
+            pass : form.password.value
+        }
+        for(var i=0;i<userData.length;i++){
+            if(userData[i]=== null){
+                return alert('Please create an account')
+            }
+            else if(userData[i].userName == signInObj.Username && userData[i].Password== signInObj.pass){
+                
+                localStorage.setItem('signInlist',JSON.stringify(userData[i]))
+                return alert('Logged in Successfully')
+            }
+            else{
+                return alert('User does not exist')
+            }
+        }
+      
+    }
+</script>
