@@ -6,9 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women's Page</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
+  <div id="navbar">
+    <div><a href="index.html">Reebok</a></div>
+    <div>
+        <div><a href="mens.html">Men</a></div>
+        <div><a href="women.html">Women</a></div>
+        <div id="user">
+        <div><a href="signin.html">Login</a></div>
+        <div><a href="signup.html">Signup</a></div>
+        </div>
+    </div>
+  </div>
+    <select name="" id="catagory">
+      <option value="none">Select a catagory</option>
+      <option value="1000">Below 1000</option>
+      <option value="1500">Below 1500</option>
+      <option value="2000">Below 2000</option>      
+    </select>
+<h1>Women Section</h1>
     <div id="container"></div>
+    
 </body>
 </html>
 <script>
@@ -474,6 +494,7 @@
    var addcartArr=JSON.parse(localStorage.getItem('cartItems')) || [] ;
   console.log(addcartArr)
   function displayData(data){
+    document.querySelector('#container').innerHTML= ""
    
      data.forEach(function(elem){
      var box= document.createElement('div')
@@ -507,6 +528,25 @@
  })
 
 }
+
+    document.querySelector('#catagory').addEventListener('change',myfunc)
+
+    function myfunc(){
+
+    var selected = document.querySelector('#catagory').value
+      if(selected== 'none') {
+          displayData(womensData)
+      }
+      else{
+        var filtered=  womensData.filter(function(elem){
+              return  elem.price < selected
+          })
+          displayData(filtered)
+          // console.log(filtered)
+      }
+    }
+
+
 function addcartfunc(elem){
  var exist= addcartArr.filter(function(el){
    return elem.name== el.name
@@ -521,3 +561,4 @@ function addcartfunc(elem){
  }
 }
 </script>
+<script src="navbar.js"></script>

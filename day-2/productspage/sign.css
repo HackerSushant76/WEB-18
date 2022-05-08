@@ -19,15 +19,15 @@ h1{
     text-align: center;
     padding-bottom: 60px;
     /* height: 400px; */
-    margin-top: 80px;
-    background-color: yellowgreen;
+    margin-top: 60px;
+    background-color: rgb(3, 38, 66);
 }
 #sub{
     width: max-content;
     padding: 10px 20px 10px 20px;
     display: block;
     margin: auto;
-    background-color: rgb(55, 3, 243);
+    background-color: green;
     color: white;
     border: 0px;
 }

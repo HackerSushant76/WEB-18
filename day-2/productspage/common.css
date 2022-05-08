@@ -43,3 +43,12 @@ img+p{
 button{
     margin-bottom: 10px;
 }
+#catagory{
+    display: block;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    margin-top: 30px;
+    font-size: 20px;
+  }
+ 
